@@ -40,7 +40,7 @@ body {
 
 .job-listing {
   width: 100%;
-  margin: 1.25rem 0;
+  margin: 3rem 0;
   padding: 1.5rem;
   background: var(--color-white);
   border-radius: 6px;
@@ -133,6 +133,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 1.5rem 0;
   }
 
   .job-listing__top {
@@ -155,8 +156,5 @@ body {
     border: 0;
     margin: 0;
     padding-top: 1rem;
-  }
-
-  .job-listing__skill {
   }
 }
