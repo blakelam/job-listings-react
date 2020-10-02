@@ -111,15 +111,24 @@ body {
   padding-top: 1.5rem;
   flex-wrap: wrap;
   border-top: 1px solid var(--color-gray-35);
+  cursor: pointer;
 }
 
 .job-listing__skill {
   margin: 0 1rem 1rem 0;
   padding: 0.5rem;
   border-radius: 4px;
+  font-size: 0.75rem;
   font-weight: 700;
+  line-height: 1;
   background: var(--color-gray-40);
   color: var(--color-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.job-listing__skill:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 @media only screen and (min-width: 990px) {
