@@ -1,4 +1,5 @@
 import React from "react";
+import JobTags from "./JobTags";
 
 function JobListing(props) {
   const {
@@ -24,10 +25,10 @@ function JobListing(props) {
           <div className="job-listing__details-row">
             <p className="job-listing__company">{company}</p>
             {isFeatured || isNew ? (
-              <ul className="job-listing__tags">
-                {isNew ? <li className="job-listing__tag">New!</li> : ""}
+              <ul className="job-listing__status-tags">
+                {isNew ? <li className="job-listing__status-tag">New!</li> : ""}
                 {isFeatured ? (
-                  <li className="job-listing__tag job-listing__tag--dark">
+                  <li className="job-listing__status-tag job-listing__status-tag--dark">
                     Featured
                   </li>
                 ) : (
@@ -45,24 +46,14 @@ function JobListing(props) {
         </div>
       </div>
       <div className="job-listing__bottom">
-        <ul className="job-listing__skills">
-          <li key={`${id}-${role}`} className="job-listing__skill">
-            {role}
-          </li>
-          <li key={`${id}-${level}`} className="job-listing__skill">
-            {level}
-          </li>
-          {languages.map((language) => (
-            <li key={`${id}-${language}`} className="job-listing__skill">
-              {language}
-            </li>
-          ))}
-          {tools.map((tool) => (
-            <li key={`${id}-${tool}`} className="job-listing__skill">
-              {tool}
-            </li>
-          ))}
-        </ul>
+        <JobTags
+          id={id}
+          role={role}
+          level={level}
+          languages={languages}
+          tools={tools}
+          filterList={props.filterList}
+        />
       </div>
     </div>
   );
