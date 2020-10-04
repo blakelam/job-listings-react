@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { listings } from "./data";
+import JobsList from "./components/JobsList";
 import JobListing from "./components/JobListing";
 
 function App() {
@@ -8,11 +9,7 @@ function App() {
   return (
     <>
       <header className="header"></header>
-      <div className="wrapper">
-        {Object.keys(jobs).map((key) => (
-          <JobListing key={key} details={jobs[key]} />
-        ))}
-      </div>
+      <JobsList jobs={listings} />
     </>
   );
 }
