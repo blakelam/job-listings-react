@@ -1,5 +1,7 @@
 @import "normalize.css";
 
+/* Base */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,10 +22,11 @@
 
   --border-radius: 6px;
   --shadow: 0 4px 12px 4px hsla(180, 29%, 50%, 0.25);
+
+  font-size: 15px;
 }
 
 body {
-  font-size: 15px;
   font-family: "Spartan", sans-serif;
   font-weight: var(--font-weight-normal);
   line-height: 1.5;
@@ -31,10 +34,20 @@ body {
   background: var(--color-gray-50);
 }
 
+/* COMPONENTS */
+
 .header {
   height: 150px;
   background: url("/images/bg-header-mobile.svg"), var(--color-primary);
 }
+
+.wrapper {
+  width: 100%;
+  padding: 0 2rem 3rem;
+  margin-top: calc(-1 * (65px / 2));
+}
+
+/* Selected Tags - Rename to match TagsList? */
 
 .selected-tags {
   opacity: 0;
@@ -86,11 +99,7 @@ body {
   background-color: var(--color-gray-20);
 }
 
-.wrapper {
-  width: 100%;
-  padding: 0 2rem 3rem;
-  margin-top: calc(-1 * (65px / 2));
-}
+/* Job Listing */
 
 .job-listing {
   width: 100%;
@@ -160,6 +169,8 @@ body {
   color: var(--color-gray-30);
 }
 
+/* Job Tags */
+
 .job-listing__tags {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
@@ -185,6 +196,8 @@ body {
   background: var(--color-primary);
   color: var(--color-white);
 }
+
+/* Footer */
 
 .footer {
   padding: 1rem 1rem 0;
