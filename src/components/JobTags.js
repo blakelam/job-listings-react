@@ -1,11 +1,7 @@
 import React from "react";
 
 function JobTags(props) {
-  const tagsList = [];
-  tagsList.push(props.role);
-  tagsList.push(props.level);
-  props.languages.map((language) => tagsList.push(language));
-  props.tools.map((tool) => tagsList.push(tool));
+  const tagsList = props.getTags(props.details);
 
   return (
     <ul className="job-listing__tags">
@@ -14,6 +10,7 @@ function JobTags(props) {
           key={`${props.id}-${tag}`}
           className="job-listing__tag"
           onClick={props.filterList}
+          data-tag-value={tag}
         >
           {tag}
         </li>

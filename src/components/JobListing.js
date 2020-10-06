@@ -53,6 +53,8 @@ function JobListing(props) {
           languages={languages}
           tools={tools}
           filterList={props.filterList}
+          getTags={props.getTags}
+          details={props.details}
         />
       </div>
     </div>

@@ -1,19 +1,63 @@
 import React, { useState } from "react";
 import { listings } from "./data";
 import JobsList from "./components/JobsList";
+import TagsList from "./components/TagsList";
 
 function App() {
   const [jobs, setJobs] = useState(listings);
+  const [selectedTags, setSelectedTags] = useState([]);
 
-  const filterList = (event) => {
-    console.log(event.target);
-    event.target.classList.toggle("selected");
-  };
+  // Returns an array with all of a job listing's tags (role, level, languages, and tools)
+  function getTags(jobListing) {
+    const tagsList = [];
+    tagsList.push(jobListing.role);
+    tagsList.push(jobListing.level);
+    jobListing.languages.map((language) => tagsList.push(language));
+    jobListing.tools.map((tool) => tagsList.push(tool));
+    return tagsList;
+  }
+
+  // Handle clicks on job tags
+  function filterList(event) {
+    const tag = event.target.dataset.tagValue;
+    setJobs(listings);
+    console.table(listings);
+    console.table(jobs);
+
+    if (selectedTags.includes(tag)) {
+      // If clicked tag is already in the list, remove it
+      const i = selectedTags.indexOf(tag);
+      selectedTags.splice(i, 1);
+    } else {
+      // If clicked tag isn't already in the list, add it
+      selectedTags.push(tag);
+    }
+
+    // If no tags are selected, reset state to include all listings, else set state to only include filtered job listings
+    if (selectedTags.length !== 0) {
+      let filteredJobs = [];
+      jobs.forEach((job) => {
+        //console.table(filteredJobs);
+        let match = true;
+        const jobTags = getTags(job);
+        selectedTags.forEach((selectedTag) => {
+          if (!jobTags.includes(selectedTag)) {
+            match = false;
+          }
+        });
+        if (match) filteredJobs.push(job);
+      });
+      setJobs(filteredJobs);
+    }
+  }
 
   return (
     <>
       <header className="header"></header>
-      <JobsList jobs={jobs} filterList={filterList} />
+      <div className="wrapper">
+        <TagsList selectedTags={selectedTags} filterList={filterList} />
+        <JobsList jobs={jobs} filterList={filterList} getTags={getTags} />
+      </div>
     </>
   );
 }
