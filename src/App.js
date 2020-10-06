@@ -5,10 +5,17 @@ import TagsList from "./components/TagsList";
 
 function App() {
   const [jobs, setJobs] = useState(listings);
+
+  /*
+    ! This is to correct an error that was blocking the Netlify build. I wasn't using the setSelectedTags function, and the build was throwing an error. Need to figure out if the selected tags need to be stored in state and/or if they need to be updated differently. 
+  */
   const selectedTagsVar = useState([]);
   let selectedTags = selectedTagsVar[0];
 
-  // Returns an array with all of a job listing's tags (role, level, languages, and tools)
+  /*
+    * getTags() returns an array with all of a job listing's tags (role, level, languages, and tools).
+    ? Should this function live somewhere else?
+  */
   function getTags(jobListing) {
     const tagsList = [];
     tagsList.push(jobListing.role);
@@ -18,21 +25,24 @@ function App() {
     return tagsList;
   }
 
-  // Handle clicks on job tags
+  /*
+    * filterList() filters job list to only show jobs with set tags (called when a tag is clicked).
+    ! Bug - If two tags are selected (example: Frontend and Senior), removing one of the tags does not update the list. This is due to how useState() works, just not sure how to fix yet.
+  */
   function filterList(event) {
     const tag = event.target.dataset.tagValue;
     setJobs(listings);
 
     if (selectedTags.includes(tag)) {
-      // If clicked tag is already in the list, remove it
+      // If clicked tag is already in the array, remove it
       const i = selectedTags.indexOf(tag);
       selectedTags.splice(i, 1);
     } else {
-      // If clicked tag isn't already in the list, add it
+      // If clicked tag isn't already in the array, add it
       selectedTags.push(tag);
     }
 
-    // If no tags are selected, reset state to include all listings, else set state to only include filtered job listings
+    // If any tags are selected, set state to only include filtered job listings
     if (selectedTags.length !== 0) {
       let filteredJobs = [];
       jobs.forEach((job) => {
