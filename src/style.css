@@ -186,6 +186,16 @@ body {
   color: var(--color-white);
 }
 
+.footer {
+  padding: 1rem 1rem 0;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.footer-link {
+  color: var(--color-primary);
+}
+
 @media only screen and (min-width: 990px) {
   .header {
     background-image: url("/images/bg-header-desktop.svg");

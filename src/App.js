@@ -56,6 +56,19 @@ function App() {
       <div className="wrapper">
         <TagsList selectedTags={selectedTags} filterList={filterList} />
         <JobsList jobs={jobs} filterList={filterList} getTags={getTags} />
+        <footer className="footer">
+          <p>
+            Coded by{" "}
+            <a className="footer-link" href="https://www.blakelam.com/">
+              Blake Lam
+            </a>
+            . Challenge by{" "}
+            <a className="footer-link" href="https://www.frontendmentor.io/">
+              Frontend Mentor
+            </a>
+            .
+          </p>
+        </footer>
       </div>
     </>
   );
