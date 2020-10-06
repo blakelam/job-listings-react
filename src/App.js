@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { listings } from "./data";
 import JobsList from "./components/JobsList";
 import TagsList from "./components/TagsList";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Wrapper from "./components/Wrapper";
 
 function App() {
   const [jobs, setJobs] = useState(listings);
@@ -63,12 +65,12 @@ function App() {
 
   return (
     <>
-      <header className="header"></header>
-      <div className="wrapper">
+      <Header />
+      <Wrapper>
         <TagsList selectedTags={selectedTags} filterList={filterList} />
         <JobsList jobs={jobs} filterList={filterList} getTags={getTags} />
         <Footer />
-      </div>
+      </Wrapper>
     </>
   );
 }
