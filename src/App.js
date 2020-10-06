@@ -5,7 +5,8 @@ import TagsList from "./components/TagsList";
 
 function App() {
   const [jobs, setJobs] = useState(listings);
-  const [selectedTags, setSelectedTags] = useState([]);
+  const selectedTagsVar = useState([]);
+  let selectedTags = selectedTagsVar[0];
 
   // Returns an array with all of a job listing's tags (role, level, languages, and tools)
   function getTags(jobListing) {
@@ -21,8 +22,6 @@ function App() {
   function filterList(event) {
     const tag = event.target.dataset.tagValue;
     setJobs(listings);
-    console.table(listings);
-    console.table(jobs);
 
     if (selectedTags.includes(tag)) {
       // If clicked tag is already in the list, remove it
