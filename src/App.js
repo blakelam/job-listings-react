@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import JobsList from "./components/JobsList";
 import TagsList from "./components/TagsList";
 import Header from "./components/Header";
