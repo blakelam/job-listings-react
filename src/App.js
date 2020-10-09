@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import { listings } from "./data";
-import { getTags } from "./helpers";
 
 function App() {
   const [state, setState] = useState({jobs: listings, tags: []});
@@ -55,6 +54,16 @@ function App() {
       });
     }
     return matchingJobs;
+  }
+
+  // getTags() returns an array with all of a job listing's tags (role, level, languages, and tools).
+  function getTags(jobListing) {
+    const tagsList = [];
+    tagsList.push(jobListing.role);
+    tagsList.push(jobListing.level);
+    jobListing.languages.map((language) => tagsList.push(language));
+    jobListing.tools.map((tool) => tagsList.push(tool));
+    return tagsList;
   }
 
   return (
