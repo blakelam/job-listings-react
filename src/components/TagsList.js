@@ -11,7 +11,7 @@ function TagsList(props) {
         <li
           key={tag}
           className="selected-tag"
-          onClick={props.filterList}
+          onClick={props.updateTags}
           data-tag-value={tag}
         >
           {tag}{" "}

@@ -6,9 +6,9 @@ function JobsList(props) {
     <>
       {props.jobs.map((listing) => (
         <JobListing
-          key={listing.id}
+          key={`listing-${listing.id}`}
           details={listing}
-          filterList={props.filterList}
+          updateTags={props.updateTags}
           getTags={props.getTags}
         />
       ))}

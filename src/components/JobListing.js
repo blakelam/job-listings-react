@@ -52,7 +52,7 @@ function JobListing(props) {
           level={level}
           languages={languages}
           tools={tools}
-          filterList={props.filterList}
+          updateTags={props.updateTags}
           getTags={props.getTags}
           details={props.details}
         />

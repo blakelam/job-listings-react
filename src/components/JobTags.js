@@ -9,7 +9,7 @@ function JobTags(props) {
         <li
           key={`${props.id}-${tag}`}
           className="job-listing__tag"
-          onClick={props.filterList}
+          onClick={props.updateTags}
           data-tag-value={tag}
         >
           {tag}
