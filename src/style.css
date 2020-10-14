@@ -10,28 +10,32 @@
 
 :root {
   --color-primary: hsl(180, 29%, 50%);
-  --color-white: hsl(0, 0%, 100%);
-  --color-gray-50: hsl(180, 52%, 96%);
-  --color-gray-40: hsl(180, 31%, 95%);
-  --color-gray-35: hsl(180, 8%, 72%);
-  --color-gray-30: hsl(180, 8%, 52%);
-  --color-gray-20: hsl(180, 14%, 20%);
+  --color-light: hsl(0, 0%, 100%);
+  --color-dark: hsl(180, 14%, 20%);
+  --color-gray-1: hsl(180, 52%, 96%);
+  --color-gray-2: hsl(180, 31%, 95%);
+  --color-gray-3: hsl(180, 8%, 72%);
+  --color-gray-4: hsl(180, 8%, 52%);
 
+  font-size: 15px;
+  --scale: 1.5;
+  --font-size-base: 1rem;
+  --font-size-sm: calc(var(--font-size-base) / var(--scale));
+  --font-size-md: calc(var(--font-size-base) * var(--scale));
   --font-weight-normal: 500;
   --font-weight-bold: 700;
 
   --border-radius: 6px;
   --shadow: 0 4px 12px 4px hsla(180, 29%, 50%, 0.25);
-
-  font-size: 15px;
+  --tagslist-height: 75px;
 }
 
 body {
   font-family: "Spartan", sans-serif;
   font-weight: var(--font-weight-normal);
-  line-height: 1.5;
-  color: var(--color-gray-20);
-  background: var(--color-gray-50);
+  line-height: var(--scale);
+  color: var(--color-dark);
+  background: var(--color-gray-1);
 }
 
 /* COMPONENTS */
@@ -44,7 +48,7 @@ body {
 .wrapper {
   width: 100%;
   padding: 0 2rem 3rem;
-  margin-top: calc(-1 * (65px / 2));
+  margin-top: calc(-1 * (var(--tagslist-height) / 2));
 }
 
 /* Selected Tags - Rename to match TagsList? */
@@ -52,10 +56,10 @@ body {
 .selected-tags {
   opacity: 0;
   display: flex;
-  min-height: 75px;
+  min-height: var(--tagslist-height);
   flex-wrap: wrap;
   padding: 1rem 2rem;
-  background: var(--color-white);
+  background: var(--color-light);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   list-style: none;
@@ -75,10 +79,10 @@ body {
   margin: 0.5rem;
   padding-left: 0.5rem;
   border-radius: 4px 0 0 4px;
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   font-weight: 700;
   line-height: 1;
-  background: var(--color-gray-40);
+  background: var(--color-gray-2);
   color: var(--color-primary);
   cursor: pointer;
 }
@@ -96,7 +100,7 @@ body {
 }
 
 .selected-tag:hover .selected-tag__remove {
-  background-color: var(--color-gray-20);
+  background-color: var(--color-dark);
 }
 
 /* Job Listing */
@@ -105,7 +109,7 @@ body {
   width: 100%;
   margin: 3rem 0;
   padding: 1.5rem;
-  background: var(--color-white);
+  background: var(--color-light);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
 }
@@ -132,7 +136,7 @@ body {
 
 .job-listing__company {
   margin-right: 1rem;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
 }
@@ -142,15 +146,15 @@ body {
   padding: 0.5rem 0.5rem 0.25rem;
   text-transform: uppercase;
   font-weight: var(--font-weight-bold);
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   line-height: 1;
   border-radius: 20px;
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-light);
 }
 
 .job-listing__status-tag--dark {
-  background: var(--color-gray-20);
+  background: var(--color-dark);
 }
 
 .job-listing__tags,
@@ -166,7 +170,7 @@ body {
 }
 
 .job-listing__metadata {
-  color: var(--color-gray-30);
+  color: var(--color-gray-4);
 }
 
 /* Job Tags */
@@ -175,7 +179,7 @@ body {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   flex-wrap: wrap;
-  border-top: 1px solid var(--color-gray-35);
+  border-top: 1px solid var(--color-gray-3);
   cursor: pointer;
 }
 
@@ -183,10 +187,10 @@ body {
   margin: 0 1rem 1rem 0;
   padding: 0.5rem;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   font-weight: 700;
   line-height: 1;
-  background: var(--color-gray-40);
+  background: var(--color-gray-2);
   color: var(--color-primary);
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -194,14 +198,14 @@ body {
 .job-listing__tag:hover,
 .selected {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-light);
 }
 
 /* Footer */
 
 .footer {
   padding: 1rem 1rem 0;
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   text-align: center;
 }
 
